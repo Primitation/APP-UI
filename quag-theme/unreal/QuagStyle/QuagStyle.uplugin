@@ -1,0 +1,17 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Quag Style",
+	"Description": "House UI style (Quag) for my editor plugins: colors, text, buttons, brushes, and the private-only Quagsire mascot.",
+	"Category": "Editor",
+	"CanContainContent": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "QuagStyle",
+			"Type": "Editor",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}

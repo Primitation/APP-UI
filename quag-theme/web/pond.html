@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>pond</title>
+<link rel="stylesheet" href="quag.css">
+<style>
+  /* app-specific layout only; all colors come from quag.css */
+  .head { display:flex; align-items:center; justify-content:space-between; margin-bottom: var(--q-space-4); }
+  .grid { display:grid; grid-template-columns: 1fr 300px; gap: var(--q-space-4); align-items:start; }
+  .check { width:18px; height:18px; border-radius:50%; border:1.5px solid var(--q-faint); flex:none; }
+  .is-done .check { border-color: var(--q-ok); background: var(--q-ok); }
+  .title { flex:1; }
+  .due { color: var(--q-muted); font-size:12px; width:70px; text-align:right; }
+  .due.today { color: var(--q-quag); }
+  .field { margin-bottom: var(--q-space-3); }
+  .week { margin-top:auto; padding: var(--q-space-2); }
+  .week h3 { margin-bottom: var(--q-space-2); display:flex; justify-content:space-between; }
+  .week h3 span { color: var(--q-muted); text-transform:none; letter-spacing:0; font-weight:500; }
+</style>
+</head>
+<body>
+<div class="q-app">
+  <aside class="q-sidebar">
+    <div class="q-brand">pond</div>
+    <button class="q-nav is-active">◆ Inbox <span class="q-count">4</span></button>
+    <button class="q-nav">◇ quag-theme <span class="q-count">2</span></button>
+    <button class="q-nav">◇ web-gl-shooter <span class="q-count">7</span></button>
+    <button class="q-nav">◇ Tablet <span class="q-count">1</span></button>
+    <div class="week">
+      <h3>This week <span>7 / 12</span></h3>
+      <div class="q-progress"><span style="width:58%"></span></div>
+    </div>
+  </aside>
+
+  <header class="q-topbar">
+    <nav class="q-tabs">
+      <button class="q-tab" data-tab="today">Today</button>
+      <button class="q-tab" data-tab="upcoming">Upcoming</button>
+      <button class="q-tab" data-tab="done">Done</button>
+    </nav>
+    <input class="q-input" style="max-width:280px;margin-left:auto" placeholder="Search tasks…  ( / )">
+  </header>
+
+  <main class="q-main">
+    <section id="today">
+      <div class="head">
+        <h1>Today</h1>
+        <button class="q-btn q-primary">＋ New task</button>
+      </div>
+      <div class="grid">
+        <div class="q-card" style="padding:var(--q-space-2)">
+          <ul class="q-list">
+            <li class="q-row"><span class="check"></span><span class="title">Fix save crash on empty file</span><span class="q-tag">bug</span><span class="q-status err"></span><span class="due today">today</span></li>
+            <li class="q-row is-selected"><span class="check"></span><span class="title">Write README for quag-theme</span><span class="q-tag">docs</span><span class="due today">today</span></li>
+            <li class="q-row"><span class="check"></span><span class="title">Port settings screen to theme</span><span class="q-tag">ui</span><span class="q-status warn"></span><span class="due">tomorrow</span></li>
+            <li class="q-row is-done"><span class="check"></span><span class="title">Pick a color palette</span><span class="q-tag">ui</span><span class="due">done</span></li>
+            <li class="q-row"><span class="check"></span><span class="title">Backup tablet partitions</span><span class="q-tag">chore</span><span class="due">fri</span></li>
+            <li class="q-row"><span class="check"></span><span class="title">Shader test in <mark>Godot</mark></span><span class="q-tag">game</span><span class="q-status info"></span><span class="due">sat</span></li>
+          </ul>
+        </div>
+        <div class="q-card is-focused">
+          <h2 style="margin-bottom:var(--q-space-4)">Write README for quag-theme</h2>
+          <div class="field"><label class="q-label">Title</label><input class="q-input" value="Write README for quag-theme"></div>
+          <div class="field"><label class="q-label">Notes</label><textarea class="q-textarea">Keep the API tiny; link DESIGN.md from the top.</textarea></div>
+          <div class="field"><label class="q-label">Due</label><input class="q-input" placeholder="e.g. tomorrow" aria-invalid="true" value="yesterdy"><div class="q-help is-error">Can't read that date.</div></div>
+          <div style="display:flex;gap:var(--q-space-2);margin-top:var(--q-space-4)">
+            <button class="q-btn q-primary">Mark done</button>
+            <button class="q-btn">Edit</button>
+            <button class="q-btn q-ghost" style="margin-left:auto">Delete</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="done" hidden>
+      <div class="head"><h1>Done</h1></div>
+      <div class="q-card q-empty">
+        <!-- PRIVATE APP ONLY -->
+        <img class="q-mascot" src="quagsire.gif" alt="">
+        <div style="color:var(--q-text);font-weight:600">Nothing finished yet today.</div>
+        <div>Press <kbd>1</kbd> to see what's on.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="q-statusbar">
+    <span><kbd>/</kbd> search</span><span><kbd>N</kbd> new</span><span><kbd>Del</kbd> delete</span>
+    <span class="q-status ok" style="margin-left:auto">Saved 2s ago</span>
+  </footer>
+</div>
+
+<div class="q-backdrop" id="dialog" hidden>
+  <div class="q-dialog" role="dialog">
+    <h2>Delete task?</h2>
+    <p class="q-muted" style="margin:0">“Write README for quag-theme” will be deleted. This can't be undone.</p>
+    <div class="q-actions">
+      <button class="q-btn q-ghost">Keep</button>
+      <button class="q-btn q-danger">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // demo routing: pond.html#today | #done | #delete
+  function show() {
+    const h = location.hash.slice(1) || "today";
+    const tab = h === "delete" ? "today" : h;
+    document.getElementById("today").hidden = tab !== "today";
+    document.getElementById("done").hidden = tab !== "done";
+    document.getElementById("dialog").hidden = h !== "delete";
+    document.querySelectorAll(".q-tab").forEach(t => t.classList.toggle("is-active", t.dataset.tab === tab));
+  }
+  addEventListener("hashchange", show); show();
+  document.querySelectorAll(".q-tab").forEach(t => t.onclick = () => location.hash = t.dataset.tab);
+  document.querySelector(".q-ghost[style]").onclick = () => location.hash = "delete";
+  document.querySelector(".q-dialog .q-ghost").onclick = () => location.hash = "today";
+</script>
+</body>
+</html>

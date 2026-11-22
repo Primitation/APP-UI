@@ -1,0 +1,15 @@
+[package]
+name = "quag-theme"
+version = "0.1.0"
+edition = "2024"
+description = "Quagsire house style for terminal (ratatui) apps: palette, styles, widgets, private-app mascot."
+
+[dependencies]
+crossterm = "0.29.0"
+ratatui = "0.30.2"
+image = { version = "0.25.10", optional = true, default-features = false, features = ["gif"] }
+ratatui-image = { version = "11.1.0", optional = true, default-features = false, features = ["crossterm", "image-defaults"] }
+
+[features]
+# Enable ONLY in private / personal tools. Embeds the Quagsire GIF (~108 KB).
+mascot = ["dep:ratatui-image", "dep:image"]

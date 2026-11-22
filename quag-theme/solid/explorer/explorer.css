@@ -1,0 +1,12 @@
+/* Explorer-only layout. Uses tokens only; no new colors. */
+.x-level { margin: var(--q-space-4) var(--q-space-2) var(--q-space-1); }
+.x-level:first-child { margin-top: var(--q-space-1); }
+.x-what { max-width: 72ch; margin: 0 0 var(--q-space-2); }
+.x-from { margin: 0 0 var(--q-space-4); font-size: 13px; }
+.x-stage { padding: var(--q-space-5); background: var(--q-bg); }
+.x-thumb { width: 640px; height: 400px; overflow: hidden; border-radius: var(--q-radius-lg); border: 1px solid var(--q-border); }
+.x-thumb > iframe { width: 1280px; height: 800px; border: 0; transform: scale(.5); transform-origin: 0 0; pointer-events: none; }
+/* "← Explorer" sits in the status bar's right end, which a framed page keeps free: it never covers content */
+.x-back { position: fixed; right: var(--q-space-2); bottom: 3px; height: 22px; padding: 0 var(--q-space-3); font-size: 12px; z-index: 20; }
+.x-framed .q-statusbar { padding-right: 120px; }
+.x-filter { margin: 0 0 var(--q-space-2); }

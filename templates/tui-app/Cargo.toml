@@ -1,0 +1,9 @@
+[package]
+name = "quag-app"            # ← rename
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+quag-theme = { path = "/home/primitation/APP-UI/quag-theme" }   # private app? add: features = ["mascot"]
+ratatui = "0.30.2"
+crossterm = "0.29.0"

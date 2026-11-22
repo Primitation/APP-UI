@@ -1,0 +1,17 @@
+# Build output (Rust, Node, Vite)
+target/
+node_modules/
+dist/
+dist-explorer/
+# Unreal plugin build output
+Binaries/
+Intermediate/
+# Editors / OS
+.DS_Store
+*.swp
+.vscode/
+.idea/
+*.log
+# Screenshots stay local, except the one the README shows
+preview/*
+!preview/tui-page-welcome.png
