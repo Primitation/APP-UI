@@ -231,15 +231,16 @@ artist, so public apps can't ship it.
 
 ## 7. Using it in a new app (terminal)
 
-```toml
-# Cargo.toml
-[dependencies]
-quag-theme = { path = "/home/primitation/APP-UI/quag-theme" }               # public app
-# quag-theme = { path = "/home/primitation/APP-UI/quag-theme", features = ["mascot"] }  # private app
+The app doesn't depend on APP-UI: it copies the parts it uses into its own `src/quag/` (README, "Apps copy parts").
+
+```sh
+node <APP-UI>/tools/quag.mjs new tui ~/code/my-tool          # template + the parts it uses
+node <APP-UI>/tools/quag.mjs add ~/code/my-tool ButtonGroup  # more parts, with what they need
+node <APP-UI>/tools/quag.mjs add ~/code/my-tool mascot       # private app only, then build with --features mascot
 ```
 
 ```rust
-use quag_theme::{atoms::Button, molecules::ButtonGroup, elements::{AppHeader, StatusBar}, ui};
+use crate::quag::{atoms::Button, molecules::ButtonGroup, elements::{AppHeader, StatusBar}, ui};
 
 // ELEMENT (in your app): a molecule put to use
 struct TaskActions<'a> { task: &'a Task }
@@ -267,8 +268,8 @@ Full template: `quag-theme/examples/explorer/` (`data.rs`, `elements.rs`, `pages
 The palette, roles and mascot rules are the same as above. Only the shapes change, because the
 desktop has pixels instead of character cells.
 
-**Setup (Solid apps)**: use the components in `quag-theme/solid/src` (see its README). Import `quag.css` once
-at the root; build elements and pages from `Button`, `ButtonGroup`, `Field`, `AppShell`… Never style raw HTML.
+**Setup (Solid apps)**: `node <APP-UI>/tools/quag.mjs new desktop <dir>`, or `add <app> <Part>…` to copy components
+from `quag-theme/solid/src` into the app's `src/quag/` (see its README). Import `./quag/quag.css` once at the root; build elements and pages from `Button`, `ButtonGroup`, `Field`, `AppShell`… Never style raw HTML.
 
 **Setup (plain CSS)**
 1. Copy `quag-theme/web/quag.css` (and `quagsire.gif` + `quagsire-still.png` for **private** apps)

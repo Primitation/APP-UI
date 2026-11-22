@@ -1,5 +1,5 @@
 import { For } from "solid-js";
-import { Bar, fmtNum } from "../atoms";
+import { Bar, fmtNum } from "../atoms/charts";
 
 /** MOLECULE · compare a few amounts: label · bar · value. Over `budget` = red. */
 export function BarChart(props: { items: [string, number][]; unit?: string; max?: number; budget?: number }) {

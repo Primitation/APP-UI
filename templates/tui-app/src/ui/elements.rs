@@ -1,7 +1,7 @@
 //! ELEMENTS of this app: molecules wired to its data. Each owns its states (empty, etc.). Never sets colors.
 
 use crate::app::Item;
-use quag_theme::{
+use crate::quag::{
     atoms,
     elements::EmptyState,
     molecules::ListRow,

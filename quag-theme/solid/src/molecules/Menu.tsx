@@ -1,5 +1,5 @@
 import { For, Show } from "solid-js";
-import { Kbd } from "../atoms";
+import { Kbd } from "../atoms/small";
 
 export interface MenuItem {
   label: string;

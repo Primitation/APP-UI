@@ -15,3 +15,5 @@ Intermediate/
 # Screenshots stay local, except the one the README shows
 preview/*
 !preview/tui-page-welcome.png
+# Parts self-test (node tools/quag.mjs check)
+.quag-check/

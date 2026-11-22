@@ -1,6 +1,7 @@
 import { createSignal, onCleanup, onMount, Show } from "solid-js";
 import { Portal } from "solid-js/web";
-import { Menu, type MenuItem, SearchBar } from "../molecules";
+import { Menu, type MenuItem } from "../molecules/Menu";
+import { SearchBar } from "../molecules/SearchBar";
 
 /** ELEMENT (shared) · Ctrl+K: every action of the app by name. ↑↓ move, Enter runs, Esc closes. */
 export function CommandPalette(props: { open: boolean; items: MenuItem[]; onClose: () => void }) {

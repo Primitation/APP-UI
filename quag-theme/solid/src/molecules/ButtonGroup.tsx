@@ -1,5 +1,5 @@
 import { For } from "solid-js";
-import { Button, type ButtonKind } from "../atoms";
+import { Button, type ButtonKind } from "../atoms/Button";
 
 export interface ButtonSpec {
   label: string;

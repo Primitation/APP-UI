@@ -1,7 +1,7 @@
 /** PAGE: places elements in the AppShell zones. Keys declared ONCE with createPageKeys
  *  (status bar hints, ? help and Ctrl K palette all read them). */
 import { createSignal } from "solid-js";
-import { AppHeader, AppShell, Button, createPageKeys, PageHead, StatusBar, Toast } from "quag-solid";
+import { AppHeader, AppShell, Button, createPageKeys, PageHead, StatusBar, Toast } from "../quag";
 import { DEMO_ITEMS } from "../consts";
 import { type Item, ItemList } from "../elements";
 

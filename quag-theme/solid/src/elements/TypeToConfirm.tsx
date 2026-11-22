@@ -1,7 +1,8 @@
 import { createSignal, onCleanup, onMount, Show } from "solid-js";
 import { Portal } from "solid-js/web";
-import { Input, Kbd } from "../atoms";
-import { ButtonGroup } from "../molecules";
+import { Input } from "../atoms/Input";
+import { Kbd } from "../atoms/small";
+import { ButtonGroup } from "../molecules/ButtonGroup";
 
 /**
  * ELEMENT (shared) · for actions that can't be undone on something important (delete a server, revoke a key):

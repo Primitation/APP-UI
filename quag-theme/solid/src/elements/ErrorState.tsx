@@ -1,4 +1,5 @@
-import { Button, Status, Text } from "../atoms";
+import { Button } from "../atoms/Button";
+import { Status, Text } from "../atoms/small";
 
 /** ELEMENT (shared) · a zone failed: what + why + Retry. Only that zone shows it; the rest stays usable. */
 export function ErrorState(props: { what: string; why: string; onRetry?: () => void }) {

@@ -1,6 +1,6 @@
 /** ELEMENTS of this app: molecules wired to its data. Each owns its states (empty, …). Never sets colors. */
 import { For, Show } from "solid-js";
-import { Card, EmptyState, Kbd, List, ListRow } from "quag-solid";
+import { Card, EmptyState, Kbd, List, ListRow } from "./quag";
 
 export interface Item { id: number; title: string; meta: string; done: boolean }
 

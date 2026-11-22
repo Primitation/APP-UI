@@ -1,6 +1,6 @@
 /*
  * quag.css: the "Quag" house style for desktop (Tauri / web view) apps.
- * Same palette and rules as the TUI crate; see /home/primitation/APP-UI/DESIGN.md.
+ * Same palette and rules as the TUI crate; see DESIGN.md at the root of APP-UI.
  * Dark only. Import this ONE file first, then the app's own CSS.
  *
  * Organised as the atomic system (STRUCTURE.md):

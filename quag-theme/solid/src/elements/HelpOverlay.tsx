@@ -1,6 +1,6 @@
 import { For, onCleanup, onMount, Show } from "solid-js";
 import { Portal } from "solid-js/web";
-import { Kbd } from "../atoms";
+import { Kbd } from "../atoms/small";
 
 export type KeyGroup = [title: string, keys: [key: string, what: string][]];
 

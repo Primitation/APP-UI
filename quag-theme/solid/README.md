@@ -1,4 +1,4 @@
-# quag-solid
+# Quag for Solid
 
 The Quag house style as **Solid** components, organised by the four levels of `../../STRUCTURE.md`.
 The look lives in `../web/quag.css`; the structure lives here.
@@ -38,18 +38,18 @@ Routes: `#/<part-id>` selects a part; `#/page/<id>` shows one UI page full windo
 
 ## Use it in an app
 
-Point at the source from your app (no publish step needed):
+Apps copy the parts they use (they never import from APP-UI):
 
-```jsonc
-// tsconfig.json → compilerOptions.paths
-"quag-solid": ["/home/primitation/APP-UI/quag-theme/solid/src/index.ts"]
-// vite.config.ts → resolve.alias + server.fs.allow
-"quag-solid": "/home/primitation/APP-UI/quag-theme/solid/src/index.ts"
+```sh
+node <APP-UI>/tools/quag.mjs new desktop ~/code/my-app        # template + its parts
+node <APP-UI>/tools/quag.mjs add ~/code/my-app ButtonGroup    # more parts, with the files they import
 ```
 
+The parts land in the app's `src/quag/` (same folders as `src/` here, plus `quag.css` and a generated `index.ts`).
+
 ```tsx
-import "/home/primitation/APP-UI/quag-theme/web/quag.css"; // once, at the root
-import { AppShell, AppHeader, ButtonGroup, type ButtonSpec } from "quag-solid";
+import "./quag/quag.css"; // once, at the root
+import { AppShell, AppHeader, ButtonGroup, type ButtonSpec } from "./quag";
 
 // ELEMENT (in your app): the molecule put to use
 export function TaskActions(props: { task: Task }) {

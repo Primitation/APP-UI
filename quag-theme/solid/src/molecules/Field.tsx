@@ -1,5 +1,5 @@
 import { type JSX, Show, createUniqueId } from "solid-js";
-import { Help, Label } from "../atoms";
+import { Help, Label } from "../atoms/small";
 
 export interface FieldProps {
   label: string;

@@ -1,5 +1,5 @@
 import { For, type JSX, Show } from "solid-js";
-import { Status, type StatusKind, Tag } from "../atoms";
+import { Status, type StatusKind, Tag } from "../atoms/small";
 
 export interface ListRowProps {
   title: JSX.Element;

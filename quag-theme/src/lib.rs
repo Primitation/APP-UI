@@ -16,6 +16,7 @@
 use ratatui::style::{Color, Modifier, Style};
 use std::sync::OnceLock;
 
+// quag:mods-start (in an app, `quag add` writes only the modules that were copied)
 pub mod atoms;
 pub mod consts;
 pub mod elements;
@@ -26,6 +27,7 @@ pub mod ui;
 
 #[cfg(feature = "mascot")]
 pub mod mascot;
+// quag:mods-end
 
 // ───────────────────────────── Palette ─────────────────────────────
 //

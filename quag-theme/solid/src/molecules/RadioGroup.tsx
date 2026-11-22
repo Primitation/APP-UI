@@ -1,5 +1,5 @@
 import { For } from "solid-js";
-import { Radio } from "../atoms";
+import { Radio } from "../atoms/Radio";
 
 let n = 0;
 

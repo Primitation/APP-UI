@@ -1,8 +1,10 @@
 //! A new Quag terminal app. Read APP-UI/DESIGN.md and STRUCTURE.md before adding UI.
-//! Levels: atoms → molecules (from quag_theme) → elements (src/ui/elements.rs) → pages (src/ui/pages.rs).
+//! Levels: atoms → molecules (copied from APP-UI into src/quag/, owned by this app) → elements (src/ui/elements.rs)
+//! → pages (src/ui/pages.rs). More parts: `node <APP-UI>/tools/quag.mjs add . <part>`.
 
 mod app;
 mod consts;
+mod quag;
 mod ui;
 
 use crossterm::event::{self, Event, KeyEventKind};

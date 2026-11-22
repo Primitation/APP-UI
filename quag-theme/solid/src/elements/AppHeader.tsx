@@ -1,5 +1,5 @@
 import { type JSX, Show } from "solid-js";
-import { type Env, EnvTag } from "../atoms";
+import { type Env, EnvTag } from "../atoms/servers";
 
 /** ELEMENT (shared) · the header: ◆ app name left, tabs/search/actions right. */
 /** `env`: server tools show the environment on every page (PROD in red). */

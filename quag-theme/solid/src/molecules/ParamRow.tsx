@@ -1,4 +1,4 @@
-import { NumberField, type NumberFieldProps, Slider } from "../atoms";
+import { NumberField, type NumberFieldProps, Slider } from "../atoms/NumberField";
 
 let n = 0;
 

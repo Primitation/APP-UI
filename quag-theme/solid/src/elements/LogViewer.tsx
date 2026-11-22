@@ -1,7 +1,8 @@
 import { LOG_INITIAL_HEIGHT, LOG_OVERSCAN_ABOVE, LOG_OVERSCAN_BELOW, LOG_ROW_PX } from "../constants";
 import { createEffect, createMemo, createSignal, For, on } from "solid-js";
-import { Mark, Status, type StatusKind, Text } from "../atoms";
-import { SearchBar } from "../molecules";
+import { Mark } from "../atoms/charts";
+import { Status, type StatusKind, Text } from "../atoms/small";
+import { SearchBar } from "../molecules/SearchBar";
 
 export interface LogEntry { time: string; kind: StatusKind; message: string }
 

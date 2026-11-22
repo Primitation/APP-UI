@@ -1,0 +1,15 @@
+{
+  "stack": "tui",
+  "parts": [
+    "atoms/containers",
+    "elements/app_header",
+    "elements/command_palette",
+    "elements/empty_state",
+    "elements/help_overlay",
+    "elements/status_bar",
+    "elements/toast",
+    "molecules/key_hints",
+    "molecules/list_row",
+    "molecules/status_line"
+  ]
+}

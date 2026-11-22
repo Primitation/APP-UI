@@ -108,7 +108,7 @@ TaskActions (element)
 
 ## 6. Inventory (what exists today)
 
-| Level | Terminal: `quag_theme` (Rust) | Desktop: `quag-solid` (Solid + `quag.css`) | Unreal: `FQuagStyle` |
+| Level | Terminal: `quag-theme/src` (Rust) | Desktop: `quag-theme/solid/src` (Solid + `quag.css`) | Unreal: `FQuagStyle` |
 |---|---|---|---|
 | **Atoms** | `atoms::{Button, Checkbox, Radio, Input, NumberField, Slider, Select, label(Tone), status_label, tag, kbd, badge, link, mark, status_icon, spinner, Skeleton, Progress, SmoothProgress, StepProgress, Sparkline, Histogram, Bar, delta_badge, Severity + severity_badge, SecretField, Curve, Clip, playhead, node_frame, port, wire, RunState + run_state, Env + env_tag, short_id, UsageBar, diff_line, step_icon, SplitHandle, Divider, panel, popup, popup_size}` | `Button`, `Checkbox` (+ toggle), `Radio`, `Input`, `Textarea`, `NumberField`, `Slider`, `Select`, `Card`, `Text` (tones + ok/warn/err), `Tag`, `Kbd`, `Badge`, `Link`, `Mark`, `Status`, `Progress`, `SmoothProgress`, `StepProgress`, `Spinner`, `Skeleton`, `Sparkline`, `Histogram`, `Bar`, `DeltaBadge`, `SeverityBadge`, `SecretField`, `Curve`, `Clip`, `Playhead`, `NodeFrame`, `NodePort`, `Wire`, `RunStateLabel`, `EnvTag`, `ShortId`, `UsageBar`, `DiffLine`, `StepIcon`, `Divider`, `Label`, `Help` | `MakeButton`, `MakeTag`, `MakeStatus`, `MakeHeading`, `MakeSeverityBadge`, `MakeDeltaBadge`, `MakeUsageBar`, `Quag.Text.*`, `Quag.Card` |
 | **Molecules** | `molecules::{ButtonGroup, ActionButton, Field, SearchBar, Tabs, KeyHints, StatusLine, ListRow, Stat, CheckList, LogLine, RadioGroup, Breadcrumbs, Menu, Table, PropertyList, TreeView (+ flatten), ParamRow, BarChart, Segmented, Meter, PortMap, StepList, KeyValueRows, freshness, CurveEditor (+ nudge_point), WeightsEditor (+ shares), Timeline, NodeGraph (+ route)}` (+ `Table::cell_areas` for atom cells) | `ButtonGroup`, `Field`, `SearchBar`, `Tabs`, `NavItem`, `ListRow`, `List`, `RadioGroup`, `Breadcrumbs`, `Menu`, `Table`, `PropertyList`, `TreeView` (+ flattenTree), `ParamRow`, `BarChart`, `Segmented`, `Meter`, `PortMap`, `StepList`, `KeyValueRows`, `Freshness`, `CurveEditor`, `WeightsEditor`, `Timeline`, `NodeGraph` (+ `nudgePoint`, `curveNudge`, `shares`, `rulerStep`, `portPoint`, `wirePath` in `game.ts`) (Table cells may be atoms) | `MakeButtonGroup`, `MakeTitle`, `MakeCard`, `MakeStat`, `MakeMeter`, `MakePropertyList`, `MakeWeightsEditor` (curves / timelines / graphs: the engine's editors, §9) |
@@ -126,7 +126,7 @@ and the **forge** demo app (game design data): `AssetList`, `CurvePanel`, `KeyIn
 `BalanceTable`, `SequencePanel`, `ClipInspector`, `GraphPanel`, `NodeInspector` on `CurvesPage` (Workspace),
 `LootPage` (List → Detail), `BalancePage` (Dashboard, with loading / can't-read states), `SequencePage` (Timeline),
 `GraphPage` (Canvas).
-Number formatting for all of them: `quag_theme::fmt` / `fmt` in Solid (`bytes`, `bytesOf`, `age`, `uptime`).
+Number formatting for all of them: `quag::fmt` in Rust / `fmt` in Solid (`bytes`, `bytesOf`, `age`, `uptime`).
 
 Demo pages in both explorers, one per layout: `TasksPage` (List → Detail, + command palette, help, toast), `DashboardPage`,
 `WorkspacePage`, `SettingsPage` (Form), `LogPage` (Stream), `WelcomePage` (Focus).
@@ -136,12 +136,17 @@ When you add a part, add it to this table **and to both explorers' catalogs** (`
 ### Folder layout in an app
 
 ```
+src/quag/         the Quag parts this app copied from APP-UI (`quag add`), listed in quag.json. The app owns them.
 src/ui/
   elements/      task_actions.rs  task_list.rs  task_inspector.rs  project_nav.rs
   pages/         tasks.rs  settings.rs
-(atoms + molecules come from the library. A new generic atom/molecule goes INTO the library, not the app.)
+(atoms + molecules are copied from APP-UI with `node <APP-UI>/tools/quag.mjs add . <Part>`, never imported from it.
+A new GENERIC atom/molecule goes INTO APP-UI first (both stacks), then gets copied; app-specific parts stay in the app.)
 ```
-- Desktop (Solid): atoms, molecules and shared elements come from `quag-theme/solid/src` (`quag-solid`). The app keeps `src/ui/elements/` and `src/ui/pages/`.
+- Desktop (Solid): the same, with `src/quag/` copied from `quag-theme/solid/src` (+ `quag.css`), imported from `./quag`.
+- One part = one file in APP-UI (`src/atoms/button.rs`, `solid/src/atoms/Button.tsx`), so `add` can copy just it. A part
+  reaches other parts by name (Rust) or by a relative import of the exact file (Solid, never the `index.ts`), so the tool
+  can follow what it needs. `node tools/quag.mjs check` proves that every part builds on its own.
 - Unreal: `Private/Widgets/Elements/S<Name>.cpp`, `Private/Widgets/S<Tool>Tab.cpp`.
 - Example: `quag-theme/examples/explorer/` (`data.rs`, `elements.rs`, `pages.rs`) and `quag-theme/solid/explorer/pond/`.
 
@@ -267,7 +272,7 @@ one page with its keymap, one element with its empty state, and a consts file (s
 - [ ] Is it built only from elements?
 - [ ] Are all its keys in one `Keymap` (hints, help and palette read from it)?
 - [ ] No magic numbers: is every size, threshold, format or timing a named constant
-      (`quag_theme::consts` / `solid/src/constants.ts` for the system, the app's own consts file for the app)?
+      (`quag::consts` / `quag/constants.ts` for the system, the app's own consts file for the app)?
 - [ ] Is it one layout (§7.3), with everything in its fixed place (§7.2)?
 - [ ] Squint test: is there exactly one bright thing, and is it the right one?
 - [ ] Does it look right at all three widths?

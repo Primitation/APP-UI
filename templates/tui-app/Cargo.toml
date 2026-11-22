@@ -3,7 +3,14 @@ name = "quag-app"            # ← rename
 version = "0.1.0"
 edition = "2024"
 
+# The UI parts live in src/quag/ (copied from APP-UI with `quag add`): no dependency on APP-UI.
 [dependencies]
-quag-theme = { path = "/home/primitation/APP-UI/quag-theme" }   # private app? add: features = ["mascot"]
 ratatui = "0.30.2"
 crossterm = "0.29.0"
+# Only used by src/quag/mascot.rs (`quag add . mascot`, PRIVATE apps only).
+image = { version = "0.25.10", optional = true, default-features = false, features = ["gif"] }
+ratatui-image = { version = "11.1.0", optional = true, default-features = false, features = ["crossterm", "image-defaults"] }
+
+[features]
+# Private app with the mascot? `default = ["mascot"]` (after `quag add . mascot`).
+mascot = ["dep:ratatui-image", "dep:image"]

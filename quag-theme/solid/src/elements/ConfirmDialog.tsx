@@ -1,6 +1,6 @@
 import { onCleanup, onMount, Show } from "solid-js";
 import { Portal } from "solid-js/web";
-import { ButtonGroup } from "../molecules";
+import { ButtonGroup } from "../molecules/ButtonGroup";
 
 export interface ConfirmDialogProps {
   open: boolean;

@@ -1,5 +1,8 @@
 import { createMemo, createSignal, For, onCleanup, onMount } from "solid-js";
-import { Bar, Clip, Curve, fmtNum, NodeFrame, NodePort, NumberField, Playhead, Status, Wire } from "../atoms";
+import { Bar, fmtNum } from "../atoms/charts";
+import { Clip, Curve, NodeFrame, NodePort, Playhead, Wire } from "../atoms/game";
+import { NumberField } from "../atoms/NumberField";
+import { Status } from "../atoms/small";
 import { CLICK_SLOP_PX, NODE_HEAD_H, NODE_PAD_Y, NODE_ROW_H, NODE_W, RULER_TICK_PX, WEIGHT_STEP } from "../constants";
 import { type NodeSpec, nodeHeight, nudgePoint, portPoint, type Pt, type Range, rulerStep, shares, type WireSpec, wirePath } from "../game";
 

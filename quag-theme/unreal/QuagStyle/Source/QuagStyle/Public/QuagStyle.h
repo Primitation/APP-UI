@@ -4,7 +4,7 @@
 //   MOLECULES  MakeButtonGroup, MakeTitle, MakeCard, MakeStat, MakeMeter, MakePropertyList, MakeWeightsEditor
 //   ELEMENTS   MakeEmptyState, MakeErrorState, MakeLoading (shared); your plugin's own elements live in Private/Widgets/Elements/
 //   UI         your tab spawner, which only places elements
-// Rules: /home/primitation/APP-UI/DESIGN.md §9. In short:
+// Rules: APP-UI/DESIGN.md §9. In short:
 //   * Backgrounds, fonts and inputs stay the EDITOR's (FAppStyle / FStyleColors), so the plugin feels native.
 //   * Quag adds the accent (primary button, focus, selection in my own lists), the brand title,
 //     text roles, status colors, tags, and the mascot in PRIVATE plugins only.

@@ -1,6 +1,7 @@
 import { Show } from "solid-js";
-import { Spinner, Status, Text } from "../atoms";
-import { ButtonGroup, type StepSpec, StepList } from "../molecules";
+import { Spinner, Status, Text } from "../atoms/small";
+import { ButtonGroup } from "../molecules/ButtonGroup";
+import { type StepSpec, StepList } from "../molecules/servers";
 import { type LogEntry, LogViewer } from "./LogViewer";
 
 /**

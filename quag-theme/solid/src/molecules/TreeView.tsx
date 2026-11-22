@@ -1,5 +1,5 @@
 import { For, Show } from "solid-js";
-import { Status, type StatusKind } from "../atoms";
+import { Status, type StatusKind } from "../atoms/small";
 
 export interface TreeItem {
   id: string;

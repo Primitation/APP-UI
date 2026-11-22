@@ -1,4 +1,5 @@
-import { Input, Kbd } from "../atoms";
+import { Input } from "../atoms/Input";
+import { Kbd } from "../atoms/small";
 
 /** MOLECULE · search icon + input + key hint. */
 export function SearchBar(props: { value: string; onValue: (v: string) => void; placeholder?: string; shortcut?: string }) {

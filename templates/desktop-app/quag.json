@@ -1,0 +1,13 @@
+{
+  "stack": "desktop",
+  "parts": [
+    "atoms/Button",
+    "atoms/Card",
+    "atoms/small",
+    "elements/AppHeader",
+    "elements/EmptyState",
+    "elements/StatusBar",
+    "elements/Toast",
+    "molecules/ListRow"
+  ]
+}

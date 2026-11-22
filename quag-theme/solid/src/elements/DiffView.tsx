@@ -1,5 +1,6 @@
 import { For, Show } from "solid-js";
-import { type DiffKind, DiffLine, Text } from "../atoms";
+import { type DiffKind, DiffLine } from "../atoms/servers";
+import { Text } from "../atoms/small";
 import { EmptyState } from "./EmptyState";
 
 /** ELEMENT (shared) · review a change before applying it: `+4 −3` then the lines. No changes → empty state. */

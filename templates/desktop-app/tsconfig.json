@@ -9,12 +9,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true,
-    "types": ["vite/client"],
-    "paths": {
-      "quag-solid": ["/home/primitation/APP-UI/quag-theme/solid/src/index.ts"],
-      "solid-js": ["./node_modules/solid-js"],
-      "solid-js/*": ["./node_modules/solid-js/*"]
-    }
+    "types": [
+      "vite/client"
+    ]
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

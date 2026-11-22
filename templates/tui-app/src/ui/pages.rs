@@ -3,7 +3,7 @@
 
 use super::elements::ItemList;
 use crate::app::App;
-use quag_theme::{
+use crate::quag::{
     self as q, Status,
     elements::{AppHeader, CommandPalette, HelpOverlay, StatusBar, Toast},
     keymap::{Binding, Keymap},

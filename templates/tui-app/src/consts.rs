@@ -1,4 +1,4 @@
-//! This app's own numbers (timing, limits). The design system's numbers are in `quag_theme::consts`:
+//! This app's own numbers (timing, limits). The design system's numbers are in `crate::quag::consts`:
 //! use those for anything about the look (sizes, thresholds, formats). No magic numbers in the code.
 
 use std::time::Duration;

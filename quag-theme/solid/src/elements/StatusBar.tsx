@@ -1,5 +1,5 @@
 import { For, type JSX, Show } from "solid-js";
-import { Kbd, Status, type StatusKind } from "../atoms";
+import { Kbd, Status, type StatusKind } from "../atoms/small";
 
 /** ELEMENT (shared) · bottom bar: key hints left, last result right. */
 export function StatusBar(props: { hints?: [string, string][]; status?: { kind: StatusKind; text: string }; children?: JSX.Element }) {

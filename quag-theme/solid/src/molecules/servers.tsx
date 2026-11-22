@@ -1,6 +1,8 @@
 import { STALE_AFTER_SECS } from "../constants";
 import { For, Show } from "solid-js";
-import { type StepState, StepIcon, SecretField, Status, UsageBar, usageTone } from "../atoms";
+import { type StepState, StepIcon, UsageBar, usageTone } from "../atoms/servers";
+import { SecretField } from "../atoms/security";
+import { Status } from "../atoms/small";
 import { age } from "../fmt";
 
 /** MOLECULE · `Memory ━━━━━── 412 / 512 MiB`. Past 80 % the value gets the status icon too. */

@@ -1,12 +1,12 @@
 # QuagStyle: house style for my Unreal Editor plugins
 
-Slate version of the Quag style (`/home/primitation/APP-UI/DESIGN.md`, §9 has the rules).
+Slate version of the Quag style (APP-UI's `DESIGN.md`, §9 has the rules).
 Targets **UE 5.3+** (it uses `FStyleColors`, `FAppStyle`, `FSlateRoundedBoxBrush`, and `FVector2f` brush sizes).
 
 ## Install
 
-1. Copy this `QuagStyle/` folder into `<Project>/Plugins/` (or `<Engine>/Plugins/Marketplace/` to share it
-   across projects).
+1. `node <APP-UI>/tools/quag.mjs unreal <Project>` copies this folder into `<Project>/Plugins/QuagStyle`, without
+   `Resources/Mascot/` (add `--mascot` for a private plugin). The project owns that copy.
 2. In your plugin's `.uplugin`:
    ```json
    "Plugins": [ { "Name": "QuagStyle", "Enabled": true } ]
